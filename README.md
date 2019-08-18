@@ -16,11 +16,12 @@ if err != nil {
 ```
 
 ## Running the example locally:
-
+- make buildexample
+- docker run --name secrets -p 8000:8000 service:latest
 
 ## Running the example in AWS:
-Build the docker container (make buildexample) and push to ECR. Next you'll need to create an ECS task (and cluster). 
-With a policy similar to:
+Build the docker container (make buildexample) and push to ECR. Ensure you have secrets configured via the [binxio secret-provider](https://github.com/binxio/cfn-secret-provider).  You'll need to create an ECS task (and cluster) with a policy similar to:
+
 ```YAML
   ServicePassword:
     Type: Custom::Secret

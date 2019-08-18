@@ -31,6 +31,10 @@ func (s *SecretsCache) GetSecureString(key string) (string, error) {
 	return string(data), nil
 }
 
+func (s *SecretsCache) SetSecureParameter(key, value string) error {
+	return s.secrets.SetSecureParameter(key, value)
+}
+
 // Password retrieves the password from our secrets implementation.
 // Additional methods can be added to SecretsCache for ensuring uniform
 // access.

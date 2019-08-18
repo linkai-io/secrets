@@ -21,13 +21,9 @@ func (s *EnvSecrets) GetSecureParameter(key string) ([]byte, error) {
 	return []byte(data), nil
 }
 
+// SetSecureParameter sets the value for the key specified by environment variable
 func (s *EnvSecrets) SetSecureParameter(key, value string) error {
 	key = strings.Replace(key, "/", "_", -1)
 	os.Setenv(key, value)
 	return nil
-}
-
-// WithCredentials not necessary for local testing
-func (s *EnvSecrets) WithCredentials(id, key string) {
-	return
 }

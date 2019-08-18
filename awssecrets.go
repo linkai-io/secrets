@@ -39,6 +39,9 @@ func (s *AWSSecrets) GetSecureParameter(key string) ([]byte, error) {
 	return []byte(*out.Parameter.Value), nil
 }
 
+// SetSecureParameter sets the value for the specified key in AWS SSM. It is
+// recommended you do not set parameters from code but from your cloudformation/
+// deployment processes instead.
 func (s *AWSSecrets) SetSecureParameter(key, value string) error {
 	parameter := &ssm.PutParameterInput{
 		KeyId:     aws.String("alias/aws/ssm"),
